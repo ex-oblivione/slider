@@ -37,3 +37,37 @@ function runSlider() {
 }
 
 runSlider();
+
+
+
+
+// const MVP = {};
+
+// MVP.View = function (rootObject) {
+//   let that = this;
+//   that.slider = document.createElement('div');
+//   that.className = 'slider';
+
+//   that.thumb = document.createElement('div');
+//   that.thumb.className = 'thumb';
+
+//   rootObject.append(that.slider);
+//   that.slider.append(that.thumb);
+
+// }
+
+// // function model() {
+
+// // }
+
+// // function presenter() {
+
+// // }
+
+
+
+// $(document).ready(function () {
+//   // var model = new MVP.Model();
+//   var view = new MVP.View($('<div/>').appendTo($("body")));
+//   // var controller = new MVP.Controller(model, view);
+// });
