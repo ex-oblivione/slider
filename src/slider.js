@@ -2,14 +2,14 @@ const MVP = {};
 
 MVP.View = function (rootObject) {
   let that = this;
-  that.slider = document.createElement('div');
-  that.slider.className = 'slider';
 
+  that.slider = rootObject;
   that.thumb = document.createElement('div');
+
   that.thumb.className = 'thumb';
 
-  rootObject.append(that.slider);
   that.slider.append(that.thumb);
+
 
   // Реагирование на событие мыши и отрисовка нового положения ползунка
   that.calcThumbPosition = function (event, slider, thumb) {
@@ -22,6 +22,7 @@ MVP.View = function (rootObject) {
     function onMouseMove(event) {
       let thumbLeft = event.clientX - shift - slider.getBoundingClientRect().left;
       if (thumbLeft < 0) thumbLeft = 0;
+
 
       let rightEdge = slider.offsetWidth - thumb.offsetWidth;
       if (thumbLeft > rightEdge) {
@@ -59,18 +60,14 @@ MVP.Model = function () {
 }
 
 MVP.Presenter = function (model, view) {
-
 }
 
 
 
-$(document).ready(function () {
-  var model = new MVP.Model();
-  var view = new MVP.View($('<div/>').appendTo($("body")));
-  var presenter = new MVP.Presenter(model, view);
-});
-$(document).ready(function () {
-  var model = new MVP.Model();
-  var view = new MVP.View($('<div/>').appendTo($("body")));
-  var presenter = new MVP.Presenter(model, view);
-});
+$.fn.addSlider = function () {
+  let model = new MVP.Model();
+  let view = new MVP.View(this);
+  let presenter = new MVP.Presenter(model, view);
+};
+
+$('.slider').addSlider();
